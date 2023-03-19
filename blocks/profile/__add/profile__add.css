@@ -1,0 +1,26 @@
+.profile__add{
+    max-width: 150px;
+    width: 100%;
+    min-height: 50px;
+    background-image: url(../../../images/Vector.png);
+    background-repeat: no-repeat;
+    background-color: black;
+    background-position: center;
+    border: #fff 2px solid;
+    align-self: center;
+    border-radius: 2px;
+    margin-left: 244px;
+}
+@media screen and (max-width: 1280px) {
+    .profile__add {
+        margin-left: calc(27px + (244 - 27) * ((100vw - 696px) / (1280 - 696)));
+        margin-right: calc(27px + (200 - 27) * ((100vw - 320px) / (1280 - 320)));
+    }
+}
+@media screen and (max-width: 696px) {
+    .profile__add {
+        margin: 0 auto;
+        justify-self: center;
+        max-width: 282px;
+    }
+}

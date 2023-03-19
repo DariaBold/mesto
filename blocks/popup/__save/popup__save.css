@@ -1,0 +1,12 @@
+.popup__save{
+    background-color: black;
+    color: white;
+    font-family: "Inter", "Arial", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    text-align: center;
+    font-style: normal;
+    margin-top: 14px;
+    margin-bottom: 18px;
+}
