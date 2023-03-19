@@ -9,6 +9,8 @@
 <body>
   <section class="popup">
     <form class="popup__container">
+      <button class="popup__close">
+      </button>
       <h2 class="popup__title">
         Редактировать профиль
       </h2>
@@ -29,11 +31,13 @@
       <section class="profile">
         <img class="profile__photo" src="./images/photo_jack.jpg" alt="фото профиля">
         <div class="profile__text">
-          <h1 class="profile__title">
-            Жак-Ив Кусто
+          <div class="profile__container">
+            <h1 class="profile__title">
+              Жак-Ив Кусто
+            </h1>
             <button class="profile__edit">
             </button>
-          </h1>
+          </div>
           <p class="profile__subtitle">Исследователь океана</p>
         </div>
         <button class="profile__add"> 
@@ -42,54 +46,64 @@
       <section class="elements">
         <div class="elements__cart">
           <img class="elements__image" src="images/kirill-pershin-1088404-unsplash.jpg" alt="карачевск">
-          <p class="elements__text">
+          <div class="elements__text">
+            <h2 class="elements__title">
             Карачевск
+            </h2>
             <img class="elements__like" src="images/Group.svg" alt="лайк">
-          </p>
+          </div>
         </div>
         <div class="elements__cart">
           <img class="elements__image" src="images/kirill-pershin-1404681-unsplash.png" alt="гора Эльбрус">
-          <p class="elements__text">
-            Гора Эльбрус
+          <div class="elements__text">
+            <h2 class="elements__title">
+              Гора Эльбрус
+            </h2>
             <img class="elements__like" src="images/Group.svg" alt="лайк">
-          </p>
+          </div>
         </div>
           <div class="elements__cart">
           <img class="elements__image" src="images/kirill-pershin-1556355-unsplash.png" alt="Домбай">
-          <p class="elements__text">
-            Домбай
+          <div class="elements__text">
+            <h2 class="elements__title">
+              Домбай
+            </h2>
             <img class="elements__like" src="images/Group.svg" alt="лайк">
-          </p>
+          </div>
         </div>
         <div class="elements__cart">
           <img class="elements__image" src="images/kirill-pershin-1404681-unsplash.png" alt="гора Эльбрус">
-          <p class="elements__text">
-            Гора Эльбрус
+          <div class="elements__text">
+            <h2 class="elements__title">
+              Гора Эльбрус
+            </h2>
             <img class="elements__like" src="images/Group.svg" alt="лайк">
-          </p>
+          </div>
         </div>
           <div class="elements__cart">
           <img class="elements__image" src="images/kirill-pershin-1556355-unsplash.png" alt="Домбай">
-          <p class="elements__text">
-            Домбай
+          <div class="elements__text">
+            <h2 class="elements__title">
+              Домбай
+            </h2>
             <img class="elements__like" src="images/Group.svg" alt="лайк">
-          </p>
+          </div>
         </div>
         <div class="elements__cart">
           <img class="elements__image" src="images/kirill-pershin-1088404-unsplash.jpg" alt="карачевск">
-          <p class="elements__text">
-            Карачевск
+          <div class="elements__text">
+            <h2 class="elements__title">
+              Карачевск
+            </h2>
             <img class="elements__like" src="images/Group.svg" alt="лайк">
-          </p>
+          </div>
         </div>
       </section>
     </main>
     <footer class="footer">
-      <div class="footer__info">
-        <p class="footer__copyright">
-          © 2020. Mesto Russia
-        </p>
-      </div>
+      <p class="footer__copyright">
+        © 2020. Mesto Russia
+      </p>
     </footer>
   </div>
   <script src="script.js">
