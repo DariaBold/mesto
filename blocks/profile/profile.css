@@ -1,6 +1,6 @@
 .profile {
     display: flex;
-    margin: 40px auto 50px;
+    margin: 38px auto 50px;
     max-width: 880px;
 }
 @media screen and (min-width: 1280px) {
@@ -13,6 +13,7 @@
     .profile {
     margin-left: calc(27px + (200 - 27) * ((100vw - 320px) / (1280 - 320)));
     margin-right: calc(27px + (200 - 27) * ((100vw - 320px) / (1280 - 320)));
+    margin-bottom: calc(36px + (50 - 36) * ((100vw - 320px) / (1280 - 320)));
     }
 }
 @media screen and (max-width: 768px) {

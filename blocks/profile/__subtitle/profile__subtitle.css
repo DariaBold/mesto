@@ -4,6 +4,9 @@
     font-weight: 400;
     color: white;
     margin: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 @media screen and (max-width: 1280px) {
     .profile__subtitle {
@@ -13,6 +16,7 @@
 @media screen and (max-width: 768px) {
     .profile__subtitle {
         text-align: center;
+        margin: 0 calc(27px + (200 - 27) * ((100vw - 320px) / (1280 - 320)));
         margin-bottom: 36px;
     }
 }

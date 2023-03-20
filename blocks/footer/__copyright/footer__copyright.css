@@ -18,7 +18,6 @@
     margin-left: calc(27px + (200 - 27) * ((100vw - 320px) / (1280 - 320)));
     font-size: calc(14px + (18 - 14) * ((100vw - 320px) / (1280 - 320)));
     margin-top: calc(48px + (67 - 48) * ((100vw - 320px) / (1280 - 320)));
-    padding-bottom: calc(60px + (36 - 60) * ((100vw - 320px) / (1280 - 320)));
+    padding-bottom: calc(36px + (60 - 36) * ((100vw - 320px) / (1280 - 320)));
     }
 }
- 

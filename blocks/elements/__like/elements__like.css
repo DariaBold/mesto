@@ -1,7 +1,14 @@
 .elements__like{
-    margin-right: 30px;
+    margin-right: 19px;
     margin-top: 31px;
+    background-image: url("../../../images/Group.svg");
+    cursor: pointer;
+    border: none;
+    max-width: 22px;
+    max-height: 18px;
+    width: 100%;
+    background-color: white;
 }
 .elements__like:hover{
-    opacity: 0.8;
+    opacity: 0.5;
 }

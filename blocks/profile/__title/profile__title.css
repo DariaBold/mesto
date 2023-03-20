@@ -4,12 +4,15 @@
     font-weight: 500;
     color: white;
     margin: 0;
-    margin-bottom: 16px;
+    margin-bottom: 6px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 @media screen and (max-width: 1280px) {
     .profile__title {
         font-size: calc(27px + (42 - 27) * ((100vw - 320px) / (1280 - 320)));
-        margin-bottom: calc(14px + (16 - 14) * ((100vw - 320px) / (1280 - 320)));
+        margin-bottom: calc(10px + (6 - 10) * ((100vw - 320px) / (1280 - 320)));
     }
 }
 @media screen and (max-width: 768px) {

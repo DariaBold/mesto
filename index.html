@@ -7,97 +7,85 @@
   <title>Mesto</title>
 </head>
 <body>
-  <section class="popup">
-    <form class="popup__container">
-      <button class="popup__close">
-      </button>
-      <h2 class="popup__title">
-        Редактировать профиль
-      </h2>
-      <input class="popup__name" type="text">
-      <input class="popup__description" type="text">
-      <button class="popup__save" type="submit" value="Сохранить">
-        Сохранить
-      </button>
-    </form>
-  </section>
   <div class="page">
     <header class="header">
-      <div class="header__box">
-        <img class="header__logo"   src="./images/logo.svg" alt="лого Россия">
-      </div>
+      <img class="header__logo"   src="./images/logo.svg" alt="лого Россия">
     </header>
     <main class="content">
       <section class="profile">
         <img class="profile__photo" src="./images/photo_jack.jpg" alt="фото профиля">
         <div class="profile__text">
           <div class="profile__container">
-            <h1 class="profile__title">
-              Жак-Ив Кусто
-            </h1>
-            <button class="profile__edit">
+            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <button class="profile__edit" type="button" aria-label="edit">
             </button>
           </div>
           <p class="profile__subtitle">Исследователь океана</p>
         </div>
-        <button class="profile__add"> 
+        <button class="profile__add" type="button" aria-label="add" name="add">
         </button>
       </section>
       <section class="elements">
-        <div class="elements__cart">
+        <article class="elements__cart">
           <img class="elements__image" src="images/kirill-pershin-1088404-unsplash.jpg" alt="карачевск">
           <div class="elements__text">
             <h2 class="elements__title">
             Карачевск
             </h2>
-            <img class="elements__like" src="images/Group.svg" alt="лайк">
+            <button class="elements__like" type="button" name="like" aria-label="like">
+            </button>
           </div>
-        </div>
-        <div class="elements__cart">
+        </article>
+        <article class="elements__cart">
           <img class="elements__image" src="images/kirill-pershin-1404681-unsplash.png" alt="гора Эльбрус">
           <div class="elements__text">
             <h2 class="elements__title">
               Гора Эльбрус
             </h2>
-            <img class="elements__like" src="images/Group.svg" alt="лайк">
+            <button class="elements__like" type="button" name="like" aria-label="like">
+            </button>
           </div>
-        </div>
-          <div class="elements__cart">
+        </article>
+        <article class="elements__cart">
           <img class="elements__image" src="images/kirill-pershin-1556355-unsplash.png" alt="Домбай">
           <div class="elements__text">
             <h2 class="elements__title">
               Домбай
             </h2>
-            <img class="elements__like" src="images/Group.svg" alt="лайк">
+            <button class="elements__like" type="button" name="like" aria-label="like">
+            </button>
           </div>
-        </div>
-        <div class="elements__cart">
+        </article>
+        <article class="elements__cart">
           <img class="elements__image" src="images/kirill-pershin-1404681-unsplash.png" alt="гора Эльбрус">
           <div class="elements__text">
             <h2 class="elements__title">
               Гора Эльбрус
             </h2>
-            <img class="elements__like" src="images/Group.svg" alt="лайк">
+            <button class="elements__like" type="button" name="like" aria-label="like">
+            </button>
           </div>
-        </div>
-          <div class="elements__cart">
+        </article>
+        <article class="elements__cart">
           <img class="elements__image" src="images/kirill-pershin-1556355-unsplash.png" alt="Домбай">
           <div class="elements__text">
             <h2 class="elements__title">
               Домбай
             </h2>
-            <img class="elements__like" src="images/Group.svg" alt="лайк">
+            <button class="elements__like" type="button" name="like" aria-label="like">
+            </button>
           </div>
-        </div>
-        <div class="elements__cart">
+        </article>
+        <article class="elements__cart">
           <img class="elements__image" src="images/kirill-pershin-1088404-unsplash.jpg" alt="карачевск">
           <div class="elements__text">
             <h2 class="elements__title">
               Карачевск
             </h2>
-            <img class="elements__like" src="images/Group.svg" alt="лайк">
+            <button class="elements__like" type="button" name="like" aria-label="like">
+            </button>
           </div>
-        </div>
+        </article>
       </section>
     </main>
     <footer class="footer">
@@ -105,6 +93,22 @@
         © 2020. Mesto Russia
       </p>
     </footer>
+    <div class="popup">
+      <div class="popup__window">
+        <button class="popup__close" type="button" aria-label="Close">
+        </button>
+        <form class="popup__form" name="form">
+          <h2 class="popup__title">
+            Редактировать профиль
+          </h2>
+          <input class="popup__input popup__input_type_name" type="text" placeholder="Введите имя" name="name">
+          <input class="popup__input popup__input_type_description" type="text" placeholder="Описание" name="dr">
+          <button class="popup__save" type="submit" value="Сохранить">
+            Сохранить
+          </button>
+        </form>
+      </div>
+    </div>
   </div>
   <script src="script.js">
   </script>
