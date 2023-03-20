@@ -13,7 +13,7 @@
     .profile {
     margin-left: calc(27px + (200 - 27) * ((100vw - 320px) / (1280 - 320)));
     margin-right: calc(27px + (200 - 27) * ((100vw - 320px) / (1280 - 320)));
-    margin-bottom: calc(36px + (50 - 36) * ((100vw - 320px) / (1280 - 320)));
+    margin-bottom: calc(41px + (53 - 41) * ((100vw - 320px) / (1280 - 320)));
     }
 }
 @media screen and (max-width: 768px) {

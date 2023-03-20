@@ -13,7 +13,7 @@
   .header__logo {
     margin-top: calc(28px + (45 - 28) * ((100vw - 320px) / (1280 - 320)));
     max-width: calc(105px + (142 - 105) * ((100vw - 320px) / (1280 - 320)));
-    padding-bottom: calc(31px + (41 - 31) * ((100vw - 320px) / (1280 - 320)));
+    padding-bottom: calc(26px + (36 - 26) * ((100vw - 320px) / (1280 - 320)));
   }
 }
 @media screen and (max-width: 450px) {
