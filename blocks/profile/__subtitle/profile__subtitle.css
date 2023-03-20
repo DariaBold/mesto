@@ -17,6 +17,6 @@
     .profile__subtitle {
         text-align: center;
         margin: 0 calc(27px + (200 - 27) * ((100vw - 320px) / (1280 - 320)));
-        margin-bottom: 36px;
+        margin-bottom: 34px;
     }
 }
