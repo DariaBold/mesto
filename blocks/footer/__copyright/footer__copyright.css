@@ -5,7 +5,7 @@
     font-weight: 400;
     text-align: left;
     color: #545454;
-    margin-top: 67px;
+    margin-top: 70px;
     padding-bottom: 60px;
 }
 @media screen and (min-width: 1280px) {
@@ -17,7 +17,7 @@
   .footer__copyright {
     margin-left: calc(20px + (200 - 20) * ((100vw - 320px) / (1280 - 320)));
     font-size: calc(14px + (18 - 14) * ((100vw - 320px) / (1280 - 320)));
-    margin-top: calc(48px + (72 - 48) * ((100vw - 320px) / (1280 - 320)));
+    margin-top: calc(49px + (72 - 49) * ((100vw - 320px) / (1280 - 320)));
     padding-bottom: calc(36px + (60 - 36) * ((100vw - 320px) / (1280 - 320)));
     }
 }

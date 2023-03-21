@@ -4,12 +4,7 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,0.5);
-    padding-top: 195px;
     z-index: 1;
-    top: 0;
-}
-@media screen and (max-width: 1280px) {
-    .popup{
-        padding-top:calc(123px + (195 - 123) * ((100vw - 320px) / (1280 - 320)));
-    }
+    place-items: center;
+    top: 0px;
 }
