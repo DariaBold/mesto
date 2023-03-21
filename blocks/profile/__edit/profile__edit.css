@@ -21,7 +21,7 @@
 }
 @media screen and (max-width: 768px) {
     .profile__edit {
-        margin-right: calc(36px + (25 - 36) * ((100vw - 320px) / (768 - 320)));
+        margin-right: calc(31px + (25 - 31) * ((100vw - 320px) / (768 - 320)));
         margin-left: calc(10px + (18 - 10) * ((100vw - 320px) / (768 - 320)));
     }
 }
