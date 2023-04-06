@@ -90,6 +90,10 @@ function addCart(imageValue, titleValue) {
     const cartElement = cartTemplate.querySelector('.elements__cart').cloneNode(true);
     cartElement.querySelector('.elements__image').src = imageValue;
     cartElement.querySelector('.elements__title').textContent = titleValue;
+    if((imageValue === '') || (titleValue === '')){
+        popupadd.classList.remove("popup_opened");
+        return 0;
+    }
     cartsContainer.prepend(cartElement);
     liked(cartElement);
     cartElement.querySelector('.elements__trash').addEventListener('click', function () {
