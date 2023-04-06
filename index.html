@@ -33,7 +33,7 @@
         © 2020. Mesto Russia
       </p>
     </footer>
-    <div class="popup">
+    <div class="popup" id="profile">
       <div class="popup__container">
         <button class="popup__close" type="button" aria-label="Закрыть">
         </button>
@@ -41,8 +41,8 @@
           <h2 class="popup__title">
             Редактировать профиль
           </h2>
-          <input class="popup__input popup__input_type_name" type="text" placeholder="Введите имя" name="name">
-          <input class="popup__input popup__input_type_description" type="text" placeholder="Описание" name="dr">
+          <input class="popup__input popup__input_type_name" type="text" placeholder="Введите имя" name="name" required>
+          <input class="popup__input popup__input_type_description" type="text" placeholder="Описание" name="dr" required>
           <button class="popup__save" type="submit" value="Сохранить">
             Сохранить
           </button>
@@ -58,8 +58,8 @@
         <h2 class="popup__title">
           Новое место
         </h2>
-        <input class="popup__input popup__input_type_title" type="text" placeholder="Название" name="name">
-        <input class="popup__input popup__input_type_image" type="url" placeholder="Ссылка на картинку" name="dr">
+        <input class="popup__input popup__input_type_title" type="text" placeholder="Название" name="name" required>
+        <input class="popup__input popup__input_type_image" type="url" placeholder="Ссылка на картинку" name="image" required>
         <button class="popup__save" type="submit" value="Создать">
           Создать
         </button>
@@ -67,7 +67,7 @@
     </div>
   </div>
   <template id="elements-template">
-    <article class="elements__cart">
+    <article class="elements__card">
       <img class="elements__image" alt="новая картинка">
       <button class="elements__trash" type="button" name="trash" aria-label="Удалить">
       </button>
@@ -89,7 +89,9 @@
     </div>
     
 </div>
-  <script src="script.js">
+  <script defer src="./scripts/constants.js">
+  </script>
+  <script defer src="./scripts/script.js">
   </script>
 </body>
 </html>

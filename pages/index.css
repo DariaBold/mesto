@@ -33,7 +33,7 @@
 @import url(../blocks/profile/__add/profile__add.css);
 
 @import url(../blocks/elements/elements.css);
-@import url(../blocks/elements/__cart/elements__cart.css);
+@import url(../blocks/elements/__card/elements__card.css);
 @import url(../blocks/elements/__image/elements__image.css);
 @import url(../blocks/elements/__trash/elements__trash.css);
 @import url(../blocks/elements/__text/elements__text.css);
