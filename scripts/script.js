@@ -59,12 +59,12 @@ function initPopupEditSubmit() {
     const formElement = document.querySelector('.popup__form');
     nameInput.value = profTitle.textContent;
     jobInput.value = profSubtitle.textContent;
+    console.log(nameInput.value, jobInput.value);
     function handleFormSubmit (evt) {
         evt.preventDefault();
         profTitle.textContent = nameInput.value;
         profSubtitle.textContent = jobInput.value;
         closePopup(popupProfile);
-        formElement.reset();
     }
     formElement.addEventListener('submit', handleFormSubmit);
 }
