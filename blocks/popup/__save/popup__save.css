@@ -12,6 +12,7 @@
     padding: 0;
     border-radius: 2px;
     margin-top: 20px;
+    margin-top: 17px;
     cursor: pointer;
 }
 .popup__save:hover{
@@ -22,6 +23,6 @@
         margin: 0 calc(22px + (36 - 22) * ((100vw - 320px) / (1280 - 320))) calc(25px + (37 - 25) * ((100vw - 320px) / (1280 - 320)));
         height: calc(46px + (50 - 46) * ((100vw - 320px) / (1280 - 320)));
         font-size: calc(14px + (18 - 14) * ((100vw - 320px) / (1280 - 320)));
-        margin-top: calc(16px + (20 - 16) * ((100vw - 320px) / (1280 - 320)));
+        margin-top: calc(13px + (17 - 13) * ((100vw - 320px) / (1280 - 320)));
     }
 }
