@@ -5,6 +5,12 @@ const buttonOpenEditProfile = document.querySelector('.profile__edit');
 const buttonOpenAddPopup = document.querySelector('.profile__add');
 const cardsContainer = document.querySelector('.elements');
 const cardTemplate = document.querySelector('#elements-template').content;
+const nameInput = document.querySelector('.popup__input_type_name');
+const jobInput = document.querySelector('.popup__input_type_description');
+const profTitle = document.querySelector('.profile__title');
+const profSubtitle = document.querySelector('.profile__subtitle');
+const inputCardImageSrc = document.querySelector('.popup__input_type_image');
+const inputCardTitle = document.querySelector('.popup__input_type_title');
 
 const createCard = (title, src) => {
     const cardElement = cardTemplate.querySelector('.elements__card').cloneNode(true);
@@ -18,6 +24,7 @@ const createCard = (title, src) => {
         popupPhotoImage.alt = title; 
         popupPhoto.querySelector('.popup__description').textContent = title;
         openPopup(popupPhoto);
+        popupPhoto.addEventListener('click', clickBackground);
    });
    cardElement.querySelector('.elements__trash').addEventListener('click', () => { 
         cardElement.remove(); 
@@ -43,38 +50,34 @@ function initPopupCloseButton(popup){
 function openPopup(popup){
     popup.classList.add('popup_opened');
     document.addEventListener('keydown', keydownEsc);
-    popup.addEventListener('click', clickBackground);
 }
 
 function closePopup(popup){
     popup.classList.remove('popup_opened');
     document.removeEventListener('keydown', keydownEsc);
-    popup.removeEventListener('click', clickBackground);
 }
 
 function initPopupEditSubmit() {
     buttonOpenEditProfile.addEventListener('click', () => openPopup(popupProfile));
-    const nameInput = document.querySelector('.popup__input_type_name');
-    const jobInput = document.querySelector('.popup__input_type_description');
-    const profTitle = document.querySelector('.profile__title');
-    const profSubtitle = document.querySelector('.profile__subtitle');
+    popupProfile.addEventListener('click', clickBackground);
     const formElement = document.querySelector('.popup__form');
+
     nameInput.value = profTitle.textContent;
     jobInput.value = profSubtitle.textContent;
-    function handleFormSubmit (evt) {
-        evt.preventDefault();
-        profTitle.textContent = nameInput.value;
-        profSubtitle.textContent = jobInput.value;
-        closePopup(popupProfile);
-    }
+
     formElement.addEventListener('submit', handleFormSubmit);
+}
+function handleFormSubmit (evt) {
+    evt.preventDefault();
+    profTitle.textContent = nameInput.value;
+    profSubtitle.textContent = jobInput.value;
+    closePopup(popupProfile);
 }
 
 function saveAdd() {
     buttonOpenAddPopup.addEventListener('click', () => openPopup(popupAdd));
+    popupAdd.addEventListener('click', clickBackground);
     const formElement = popupAdd.querySelector('.popup__form');
-    const inputCardImageSrc = document.querySelector('.popup__input_type_image');
-    const inputCardTitle = document.querySelector('.popup__input_type_title');
     const buttonElement = popupAdd.querySelector('.popup__save');
     function handleFormSubmit (evt) {
         evt.preventDefault();
@@ -88,19 +91,14 @@ function saveAdd() {
     formElement.addEventListener('submit', handleFormSubmit);
 }
 function keydownEsc(evt) {
-    const popup = document.querySelector('.popup_opened');
     if (evt.key === 'Escape') {
+        const popup = document.querySelector('.popup_opened');
         closePopup(popup);
     }
 }
-function clickBackground() {
-    if(document.querySelector('.popup_opened')){
-        const popup = document.querySelector('.popup_opened');
-        popup.addEventListener('click', function (evt) {
-            if(evt.target.classList.contains('popup_opened')) {
-                closePopup(popup);
-            }
-        });
+function clickBackground(evt) {
+    if (evt.target === evt.currentTarget) {
+        closePopup(evt.currentTarget);
     }
 }
 initPopupEditSubmit();
