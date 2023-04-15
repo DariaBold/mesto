@@ -1,4 +1,4 @@
-const enableConst = ({
+const variables = ({
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
     submitButtonSelector: '.popup__save',
@@ -65,4 +65,4 @@ const hasInvalidInput = (inputList) => {
   }); 
 }
 
-enableValidation(enableConst);
+enableValidation(variables);

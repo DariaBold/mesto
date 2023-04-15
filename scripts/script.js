@@ -42,10 +42,14 @@ function initPopupCloseButton(popup){
 }
 function openPopup(popup){
     popup.classList.add('popup_opened');
+    document.addEventListener('keydown', keydownEsc);
+    popup.addEventListener('click', clickBackground);
 }
 
 function closePopup(popup){
     popup.classList.remove('popup_opened');
+    document.removeEventListener('keydown', keydownEsc);
+    popup.removeEventListener('click', clickBackground);
 }
 
 function initPopupEditSubmit() {
@@ -78,23 +82,21 @@ function saveAdd() {
         closePopup(popupAdd);
         formElement.reset();
         buttonElement.setAttribute('disabled', true);
-        buttonElement.classList.add(enableConst.inactiveButtonClass);
+        buttonElement.classList.add(variables.inactiveButtonClass);
     }
     
     formElement.addEventListener('submit', handleFormSubmit);
 }
 function keydownEsc(evt) {
-    if(document.querySelector('.popup_opened')){
-        const popup = document.querySelector('.popup_opened');
-        if (evt.key === 'Escape') {
-            closePopup(popup);
-        }
+    const popup = document.querySelector('.popup_opened');
+    if (evt.key === 'Escape') {
+        closePopup(popup);
     }
 }
 function clickBackground() {
     if(document.querySelector('.popup_opened')){
         const popup = document.querySelector('.popup_opened');
-        document.addEventListener('click', function (evt) {
+        popup.addEventListener('click', function (evt) {
             if(evt.target.classList.contains('popup_opened')) {
                 closePopup(popup);
             }
@@ -103,8 +105,6 @@ function clickBackground() {
 }
 initPopupEditSubmit();
 saveAdd();
-document.addEventListener('click', clickBackground);
-document.addEventListener('keydown', keydownEsc);
 initPopupCloseButton(popupAdd);
 initPopupCloseButton(popupProfile);
 initPopupCloseButton(popupPhoto);
