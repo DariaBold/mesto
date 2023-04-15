@@ -59,12 +59,12 @@ function closePopup(popup){
 
 function initPopupEditSubmit() {
     buttonOpenEditProfile.addEventListener('click', () => openPopup(popupProfile));
-    popupProfile.addEventListener('click', clickBackground);
-    const formElement = document.querySelector('.popup__form');
-
+    
     nameInput.value = profTitle.textContent;
     jobInput.value = profSubtitle.textContent;
 
+    popupProfile.addEventListener('click', clickBackground);
+    const formElement = document.querySelector('.popup__form');
     formElement.addEventListener('submit', handleFormSubmit);
 }
 function handleFormSubmit (evt) {
