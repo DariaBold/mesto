@@ -101,5 +101,4 @@ function listenerBackground(){
         popup.addEventListener('click', clickBackground);
     });
 }
-// saveAdd();
 listenerBackground();
