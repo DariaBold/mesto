@@ -33,53 +33,36 @@ const createCard = (title, src) => {
     });
     return cardElement;
 }
-
 initialCards.forEach ((el) => {
     cardsContainer.prepend(createCard(el.name,el.link));
 })
-
-cardsContainer.addEventListener('click', function (evt) {
-    if (evt.target.classList.contains('elements__like')) {
-        evt.target.classList.toggle('elements__like_active'); 
-  }
-}); 
-
 function openPopup(popup){
     popup.classList.add('popup_opened');
     document.addEventListener('keydown', keydownEsc);
 }
-
 function closePopup(popup){
     popup.classList.remove('popup_opened');
     document.removeEventListener('keydown', keydownEsc);
 }
-
 function initPopupEditSubmit() {
     openPopup(popupProfile);
     nameInput.value = profTitle.textContent;
     jobInput.value = profSubtitle.textContent;
 }
-buttonOpenEditProfile.addEventListener('click', initPopupEditSubmit);
-formElement.addEventListener('submit', handleFormSubmit);
-
 function handleFormSubmit (evt) {
     evt.preventDefault();
     profTitle.textContent = nameInput.value;
     profSubtitle.textContent = jobInput.value;
     closePopup(popupProfile);
 }
-
-buttonOpenAddPopup.addEventListener('click', () => openPopup(popupAdd));
 function handleFormSubmitAdd (evt) {
     evt.preventDefault();
     cardsContainer.prepend(createCard(inputCardTitle.value,inputCardImageSrc.value));
     closePopup(popupAdd);
-    formElement.reset();
+    formElementAdd.reset();
     buttonElement.setAttribute('disabled', true);
     buttonElement.classList.add(variables.inactiveButtonClass);
 }
-formElementAdd.addEventListener('submit', handleFormSubmitAdd);
-
 function keydownEsc(evt) {
     if (evt.key === 'Escape') {
         const popup = document.querySelector('.popup_opened');
@@ -101,4 +84,13 @@ function listenerBackground(){
         popup.addEventListener('click', clickBackground);
     });
 }
+cardsContainer.addEventListener('click', function (evt) {
+    if (evt.target.classList.contains('elements__like')) {
+        evt.target.classList.toggle('elements__like_active'); 
+  }
+});
+buttonOpenAddPopup.addEventListener('click', () => openPopup(popupAdd));
+formElementAdd.addEventListener('submit', handleFormSubmitAdd);
+buttonOpenEditProfile.addEventListener('click', initPopupEditSubmit);
+formElement.addEventListener('submit', handleFormSubmit);
 listenerBackground();
