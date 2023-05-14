@@ -1,6 +1,8 @@
 import initialCards from './constants.js';
 import Card from './Card.js';
+import FormValidation from './FormValidator.js';
 const popupProfile = document.querySelector('#profile');
+const formElementEdit = popupProfile.querySelector('.popup__form');
 const popupAdd = document.querySelector('#add');
 const buttonOpenEditProfile = document.querySelector('.profile__edit');
 const buttonOpenAddPopup = document.querySelector('.profile__add');
@@ -17,6 +19,14 @@ const formElementAdd = popupAdd.querySelector('.popup__form');
 const buttonElement = popupAdd.querySelector('.popup__save');
 
 const cardTemplate = '#elements-template';
+
+const variables = {
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__save',
+    inactiveButtonClass: 'popup__save_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_disable'
+};
 
 initialCards.forEach ((el) => {
     createNewCard(el);
@@ -47,6 +57,7 @@ function handleFormSubmit (evt) {
 function createNewCard(el){
     const card = new Card(el, cardTemplate, openPopup);
     addCard(cardsContainer, card.createCard());
+    
 }
 function handleFormSubmitAdd (evt) {
     evt.preventDefault();
@@ -84,3 +95,8 @@ formElementAdd.addEventListener('submit', handleFormSubmitAdd);
 buttonOpenEditProfile.addEventListener('click', initPopupEditSubmit);
 formElement.addEventListener('submit', handleFormSubmit);
 listenerBackground();
+
+const validationCheckAdd = new FormValidation(variables, formElementAdd);
+const validationCheckEdit = new FormValidation(variables, formElementEdit);
+validationCheckAdd.enableValidation();
+validationCheckEdit.enableValidation();
