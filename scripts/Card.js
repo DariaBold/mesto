@@ -21,10 +21,9 @@ class Card {
         };
     }
     _setListenerTrash(evt){
-        evt.target.parentElement.remove();
+        evt.target.closeset("elements__card").remove();
     }
     _setListenerPopupPhotoImage = () => {
-        this._popupPhotoImage =  this._popupPhoto.querySelector('.popup__image');
         this._popupPhotoImage.src =  this._link;
         this._popupPhotoImage.alt =  this._name; 
         this._popupPhoto.querySelector('.popup__description').textContent = this._name;
@@ -42,6 +41,7 @@ class Card {
         this._trashElemnt = this._cloneCard.querySelector('.elements__trash');
         this._likeElemnt = this._cloneCard.querySelector('.elements__like');
         this._popupPhoto = document.querySelector('#photo');
+        this._popupPhotoImage =  this._popupPhoto.querySelector('.popup__image');
         this._cardImage.src = this._link;
         this._cardImage.alt =this._name;
         this._titleElement.textContent = this._name;
