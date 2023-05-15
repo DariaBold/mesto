@@ -21,7 +21,7 @@ class Card {
         };
     }
     _setListenerTrash(evt){
-        evt.target.closeset("elements__card").remove();
+        evt.target.closest(".elements__card").remove();
     }
     _setListenerPopupPhotoImage = () => {
         this._popupPhotoImage.src =  this._link;
