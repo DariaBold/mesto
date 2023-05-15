@@ -30,7 +30,6 @@ const variables = {
 
 initialCards.forEach ((el) => {
     addCard(cardsContainer, createNewCard(el));
-    createNewCard(el);
 })
 function addCard(cardsContainer, card){
     cardsContainer.prepend(card);
