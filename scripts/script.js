@@ -29,6 +29,7 @@ const variables = {
 };
 
 initialCards.forEach ((el) => {
+    addCard(cardsContainer, createNewCard(el));
     createNewCard(el);
 })
 function addCard(cardsContainer, card){
@@ -56,16 +57,15 @@ function handleFormSubmit (evt) {
 }
 function createNewCard(el){
     const card = new Card(el, cardTemplate, openPopup);
-    addCard(cardsContainer, card.createCard());
-    
+    const cardElement = card.createCard();
+  return cardElement
 }
 function handleFormSubmitAdd (evt) {
     evt.preventDefault();
     const inputCard = {name: inputCardTitle.value, link:inputCardImageSrc.value};
-    createNewCard(inputCard);
+    addCard(cardsContainer, createNewCard(inputCard));
     closePopup(popupAdd);
     formElementAdd.reset();
-    buttonElement.setAttribute('disabled', true);
     buttonElement.classList.add(variables.inactiveButtonClass);
 }
 function keydownEsc(evt) {
