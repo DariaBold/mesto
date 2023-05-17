@@ -16,7 +16,6 @@ const inputCardImageSrc = document.querySelector('.popup__input_type_image');
 const inputCardTitle = document.querySelector('.popup__input_type_title');
 const formElement = document.querySelector('.popup__form');
 const formElementAdd = popupAdd.querySelector('.popup__form');
-const buttonElement = popupAdd.querySelector('.popup__save');
 
 const cardTemplate = '#elements-template';
 
@@ -43,10 +42,18 @@ function closePopup(popup){
     popup.classList.remove('popup_opened');
     document.removeEventListener('keydown', keydownEsc);
 }
+
+const validationCheckAdd = new FormValidation(variables, formElementAdd);
+const validationCheckEdit = new FormValidation(variables, formElementEdit);
+
+validationCheckAdd.enableValidation();
+validationCheckEdit.enableValidation();
+
 function initPopupEditSubmit() {
-    openPopup(popupProfile);
     nameInput.value = profTitle.textContent;
     jobInput.value = profSubtitle.textContent;
+    openPopup(popupProfile);
+    validationCheckEdit.resetValidation();
 }
 function handleFormSubmit (evt) {
     evt.preventDefault();
@@ -64,8 +71,6 @@ function handleFormSubmitAdd (evt) {
     const inputCard = {name: inputCardTitle.value, link:inputCardImageSrc.value};
     addCard(cardsContainer, createNewCard(inputCard));
     closePopup(popupAdd);
-    formElementAdd.reset();
-    buttonElement.classList.add(variables.inactiveButtonClass);
 }
 function keydownEsc(evt) {
     if (evt.key === 'Escape') {
@@ -89,13 +94,13 @@ function listenerBackground(){
     });
 }
 
-buttonOpenAddPopup.addEventListener('click', () => openPopup(popupAdd));
+buttonOpenAddPopup.addEventListener('click', () => {
+    formElementAdd.reset();
+    validationCheckAdd.resetValidation();
+    openPopup(popupAdd);
+});
 formElementAdd.addEventListener('submit', handleFormSubmitAdd);
 buttonOpenEditProfile.addEventListener('click', initPopupEditSubmit);
 formElement.addEventListener('submit', handleFormSubmit);
 listenerBackground();
 
-const validationCheckAdd = new FormValidation(variables, formElementAdd);
-const validationCheckEdit = new FormValidation(variables, formElementEdit);
-validationCheckAdd.enableValidation();
-validationCheckEdit.enableValidation();
