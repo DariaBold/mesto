@@ -1,10 +1,10 @@
 class Card {
-    constructor(data, cardTemplate, openPopup){
+    constructor(data, cardTemplate, handleCardClick){
         this._data = data;
         this._link = data.link;
         this._name = data.name;
         this._cardTemplate = cardTemplate;
-        this._openPopup = openPopup;
+        this._handleCardClick = handleCardClick;
     }
     _getTemplete(){
         this._cardElement = document
@@ -24,10 +24,7 @@ class Card {
         evt.target.closest(".elements__card").remove();
     }
     _setListenerPopupPhotoImage = () => {
-        this._popupPhotoImage.src =  this._link;
-        this._popupPhotoImage.alt =  this._name;
-        this._popupPhotoDescription.textContent = this._name;
-        this._openPopup(this._popupPhoto);
+        this._handleCardClick(this._data);
     }
     _setListeners(){
         this._trashElemnt.addEventListener('click',this._setListenerTrash);
@@ -40,9 +37,6 @@ class Card {
         this._titleElement = this._cloneCard.querySelector('.elements__title');
         this._trashElemnt = this._cloneCard.querySelector('.elements__trash');
         this._likeElemnt = this._cloneCard.querySelector('.elements__like');
-        this._popupPhoto = document.querySelector('#photo');
-        this._popupPhotoImage = this._popupPhoto.querySelector('.popup__image');
-        this._popupPhotoDescription = this._popupPhoto.querySelector('.popup__description');
         this._cardImage.src = this._link;
         this._cardImage.alt =this._name;
         this._titleElement.textContent = this._name;
