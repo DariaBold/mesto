@@ -60,7 +60,7 @@ cardCreate.addCard(initialCards);
 
 
 const popupAddEdit = new PopupWithForm(popupAddId, (data) => {
-    cardCreate.addCard([data]);
+    cardCreate.addItem(createCard(data));
     popupAddEdit.close();
 })
 popupAddEdit.setEventListeners();
