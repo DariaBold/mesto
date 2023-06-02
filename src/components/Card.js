@@ -42,6 +42,7 @@ class Card {
     }
     deleteCardFromHtml = () => {
         this._cloneCard.remove();
+        this._cloneCard = null;
     }
     _setListenerPopupPhotoImage = () => {
         this._handleCardClick(this._data);

@@ -4,19 +4,19 @@ export default class Api{
         this._headers=options.headers;
         this._authorization= this._headers.authorization;
     }
+    _getResponseData(res){
+        if (!res.ok) {
+            return Promise.reject(`Ошибка: ${res.status}`);
+        }
+        return res.json();
+    }
     getInitialCards() {
         return fetch(`${this._url}/cards`,{
             headers: {
                 authorization: this._authorization
             }
         })
-        .then((res) => {
-            if(res.ok){
-                return res.json();
-            }else{
-                return Promise.reject
-            }
-        })
+            .then(this._getResponseData);
     }
     getUserInfo(){
         return fetch(`${this._url}/users/me`, {
@@ -24,13 +24,7 @@ export default class Api{
                 authorization: this._authorization
             }
         })
-            .then((res) => {
-                if(res.ok){
-                    return res.json();
-                }else{
-                    return Promise.reject
-                }
-            })
+            .then(this._getResponseData);
     }
     setUserInfo(info){
         return fetch(`${this._url}/users/me`, {
@@ -41,13 +35,7 @@ export default class Api{
                 about: info.description 
               })
         })
-            .then((res) => {
-                if(res.ok){
-                    return res.json();
-                }else{
-                    return Promise.reject
-                }
-            })
+            .then(this._getResponseData);
     }
     setUserAvatar(urlAvatar){
         return fetch(`${this._url}/users/me/avatar`, {
@@ -57,13 +45,7 @@ export default class Api{
                 avatar: urlAvatar.avatar,
               })
         })
-            .then((res) => {
-                if(res.ok){
-                    return res.json();
-                }else{
-                    return Promise.reject
-                }
-            })
+            .then(this._getResponseData);
     }
     addCard(info){
         return fetch(`${this._url}/cards`, {
@@ -74,13 +56,7 @@ export default class Api{
                 link: info.link
               })
         })
-            .then((res) => {
-                if(res.ok){
-                    return res.json();
-                }else{
-                    return Promise.reject
-                }
-            })
+            .then(this._getResponseData);
     }
     deleteCard(cardId){
         return fetch(`${this._url}/cards/${cardId}`, {
@@ -89,13 +65,7 @@ export default class Api{
                 authorization: this._authorization
             }
         })
-            .then((res) => {
-                if(res.ok){
-                    return res.json();
-                }else{
-                    return Promise.reject
-                }
-            })
+            .then(this._getResponseData);
     }
 
     putLike(cardId){
@@ -105,13 +75,7 @@ export default class Api{
                 authorization: this._authorization
             }
         })
-            .then((res) => {
-                if(res.ok){
-                    return res.json();
-                }else{
-                    return Promise.reject
-                }
-            })
+            .then(this._getResponseData);
     }
     deleteLike(cardId){
         return fetch(`${this._url}/cards/${cardId}/likes`, {
@@ -120,13 +84,7 @@ export default class Api{
                 authorization: this._authorization
             }
         })
-            .then((res) => {
-                if(res.ok){
-                    return res.json();
-                }else{
-                    return Promise.reject
-                }
-            })
+            .then(this._getResponseData);
     }
 
 }

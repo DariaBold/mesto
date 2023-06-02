@@ -6,7 +6,8 @@ export default class UserInfo{
     }
     getUserInfo(){
         return {name: this._profTitle.textContent,
-        description: this._profSubtitle.textContent}
+        description: this._profSubtitle.textContent,
+        id: this._id}
     }
     setUserInfo({avatar,name,description}){
         this._profAvatar.src = avatar;

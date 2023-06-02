@@ -65,12 +65,13 @@ const popupProfEdit = new PopupWithForm(popupProfileId, (form) => {
             description: res.about, 
             avatar: res.avatar
         })
-        })
+        popupProfEdit.close();
+    })
         .catch((error => console.error(`Ошибка редактирования профиля ${error}`)))
         .finally(()=>{
             renderLoading(true, formElement);
         })
-    popupProfEdit.close();
+    
 })
 
 const popupAvatar = new PopupWithForm(popupAvatarId, (form) => {
@@ -82,12 +83,12 @@ const popupAvatar = new PopupWithForm(popupAvatarId, (form) => {
             description: res.about, 
             avatar: res.avatar
         })
+        popupAvatar.close();
     })
     .catch((error => console.error(`Ошибка редактирования аватара ${error}`)))
     .finally(()=>{
         renderLoading(false, formElementAvatar);
     });
-    popupAvatar.close();
 })
 
 popupProfEdit.setEventListeners();
@@ -117,7 +118,7 @@ function createCard(el) {
             renderLoading(true, formElementQuestion);
             evt.preventDefault();
             api.deleteCard(cardId)
-                .then(() =>{
+                .then(() => {
                     card.deleteCardFromHtml();
                     popupQuestion.close();
                 })
@@ -131,6 +132,21 @@ function createCard(el) {
     const cardElement = card.createCard();
     return cardElement;
 }
+let userId;
+
+Promise.all([api.getUserInfo(),api.getInitialCards()])
+    .then(([user, cards]) =>{
+        userId = user._id;
+        cards.forEach(element => {
+            element.myId = user._id;
+        });
+        userInfo.setUserInfo({
+            name: user.name,
+            description: user.about, avatar: user.avatar
+        });
+        cardCreate.addCard(cards);
+    })
+    .catch((error => console.error(`Ошибка создания карточки ${error}`)))
 
 const cardCreate = new Section({ 
     renderer: (el)=>{
@@ -139,16 +155,17 @@ const cardCreate = new Section({
 
 const popupAddEdit = new PopupWithForm(popupAddId, (data) => {
     renderLoading(true, formElementAdd);
-    Promise.all([api.getUserInfo(), api.addCard(data)])
-    .then(([user, cards]) =>{
-        cards.myId = user._id;
+    Promise.all([api.addCard(data)])
+    .then(([cards]) =>{
+        cards.myId = userId;
         cardCreate.addItem(createCard(cards));
-    })
+        popupAddEdit.close();
+    }  
+    )
     .catch((error => console.error(`Ошибка создания карточки ${error}`)))
     .finally(()=>{
         renderLoading(false, formElementAdd);
     });
-    popupAddEdit.close();
 })
 popupAddEdit.setEventListeners();
 
@@ -171,15 +188,3 @@ function renderLoading(isLoading, button){
     }
   }
 
-Promise.all([api.getUserInfo(),api.getInitialCards()])
-    .then(([user, cards]) =>{
-        cards.forEach(element => {
-            element.myId = user._id;
-        });
-        userInfo.setUserInfo({
-            name: user.name,
-            description: user.about, avatar: user.avatar
-        });
-        cardCreate.addCard(cards);
-    })
-    .catch((error => console.error(`Ошибка данных ${error}`)))
