@@ -7,6 +7,6 @@
     white-space: nowrap;
     overflow: hidden;
     margin: 0;
-    place-self: center;
     margin-top: 25px;
+    grid-row: 1/4;
 }

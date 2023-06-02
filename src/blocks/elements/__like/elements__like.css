@@ -1,18 +1,13 @@
 .elements__like{
-    margin-top: 31px;
     background-image: url("../../../images/Group.svg");
     cursor: pointer;
     border: none;
-    max-width: 22px;
-    max-height: 18px;
-    width: 100%;
+    width: 22px;
+    height: 18px;
     background-color: white;
+    grid-column: 2/3;
+    grid-row: 2/3;
 }
 .elements__like:hover{
     opacity: 0.5;
 }
-@media screen and (max-width: 1280px) {
-    .elements__like {
-      margin-top: calc(29px + (31 - 29) * ((100vw - 320px) / (1280 - 320)));
-    }
-  }

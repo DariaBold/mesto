@@ -2,20 +2,27 @@ export const popupProfile = document.querySelector('#profile');
 export const formElementEdit = popupProfile.querySelector('.popup__form');
 export const popupAdd = document.querySelector('#add');
 export const buttonOpenEditProfile = document.querySelector('.profile__edit');
+export const popupAvatar = document.querySelector('#avatar');
 export const buttonOpenAddPopup = document.querySelector('.profile__add');
+export const clickOpenAvatarPopup = document.querySelector('.profile__photo');
 export const formElement = document.querySelector('.popup__form');
 export const formElementAdd = popupAdd.querySelector('.popup__form');
-
+export const formElementAvatar = popupAvatar.querySelector('.popup__form');
+export const popupQuestion = document.querySelector('#question');
+export const formElementQuestion = popupQuestion.querySelector('.popup__form');
 export const cardTemplate = '#elements-template';
 
 export const popupProfileId = '#profile';
 export const popupAddId = '#add';
 export const popupImage = '#photo';
+export const popupAvatarId = '#avatar';
+export const popupQuestionId = '#question';
 export const section = '.elements';
 
 export const userInformation = {
     profTitle: '.profile__title',
-    profSubtitle: '.profile__subtitle'
+    profSubtitle: '.profile__subtitle',
+    profAvatar:'.profile__photo'
 };
 
 export const variables = {
