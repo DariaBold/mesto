@@ -53,8 +53,6 @@ function initPopupAvatarSubmit(){
     popupAvatar.open();
     validationCheckAvatar.resetValidation();
 }
-const popupQuestion = new Popup(popupQuestionId);
-popupQuestion.setEventListeners();
 
 
 const popupProfEdit = new PopupWithForm(popupProfileId, (form) => {
@@ -96,6 +94,23 @@ popupAvatar.setEventListeners();
 const popupImageOpen = new PopupWithImage(popupImage);
 popupImageOpen.setEventListeners();
 
+let userId;
+
+Promise.all([api.getUserInfo(),api.getInitialCards()])
+    .then(([user, cards]) =>{
+        userId = user._id;
+        cards.forEach(element => {
+            element.myId = user._id;
+        });
+        userInfo.setUserInfo({
+            name: user.name,
+            description: user.about, avatar: user.avatar
+        });
+        cardCreate.addCard(cards);
+    })
+    .catch((error => console.error(`Ошибка создания карточки ${error}`)))
+
+const popupQuestion = new Popup(popupQuestionId);
 function createCard(el) {
     const card = new Card(el, cardTemplate, popupImageOpen.open, (likeElement, cardId) =>{
         const likeElementCard = 'elements__like_active';
@@ -113,50 +128,50 @@ function createCard(el) {
                 .catch((error => console.error(`Ошибка добавления лайка ${error}`)));
         }
     }, (cardId)=>{
-        popupQuestion.open();
-        formElementQuestion.addEventListener('submit',  (evt) => {
+        function deleteCard(evt) {
             renderLoading(true, formElementQuestion);
             evt.preventDefault();
             api.deleteCard(cardId)
-                .then(() => {
+                .then((res) => {
                     card.deleteCardFromHtml();
                     popupQuestion.close();
+                    console.log(res);
                 })
                 .catch((error => console.error(`Ошибка удаления карточки ${error}`)))
                 .finally(()=>{
                     renderLoading(false, formElementQuestion);
+                    formElementQuestion.removeEventListener('submit', deleteCard);
                 });
         }
-        )
-    });
+        
+        popupQuestion.open = function(){
+            this._popup.classList.add('popup_opened');
+            document.addEventListener('keydown', this._handleEscClose);
+            formElementQuestion.addEventListener('submit', deleteCard)
+        }
+        popupQuestion.open();
+        popupQuestion.close = function(){
+            this._popup.classList.remove('popup_opened');
+            document.removeEventListener('keydown', this._handleEscClose);
+            formElementQuestion.removeEventListener('submit', deleteCard);
+        };
+        
+    }
+    );
     const cardElement = card.createCard();
     return cardElement;
 }
-let userId;
-
-Promise.all([api.getUserInfo(),api.getInitialCards()])
-    .then(([user, cards]) =>{
-        userId = user._id;
-        cards.forEach(element => {
-            element.myId = user._id;
-        });
-        userInfo.setUserInfo({
-            name: user.name,
-            description: user.about, avatar: user.avatar
-        });
-        cardCreate.addCard(cards);
-    })
-    .catch((error => console.error(`Ошибка создания карточки ${error}`)))
-
 const cardCreate = new Section({ 
     renderer: (el)=>{
         cardCreate.addItem(createCard(el));
     }}, section);
 
+popupQuestion.setEventListeners();
+
 const popupAddEdit = new PopupWithForm(popupAddId, (data) => {
     renderLoading(true, formElementAdd);
-    Promise.all([api.addCard(data)])
-    .then(([cards]) =>{
+    api.addCard(data)
+    .then(cards =>{
         cards.myId = userId;
         cardCreate.addItem(createCard(cards));
         popupAddEdit.close();
@@ -167,6 +182,7 @@ const popupAddEdit = new PopupWithForm(popupAddId, (data) => {
         renderLoading(false, formElementAdd);
     });
 })
+
 popupAddEdit.setEventListeners();
 
 buttonOpenAddPopup.addEventListener('click', () => {
@@ -181,10 +197,10 @@ formElementAvatar.addEventListener('submit', popupAvatar);
 
 function renderLoading(isLoading, button){
     const defaultText = button.querySelector('.popup__save').textContent;
+    const outputText = defaultText.replace('...', '');
     if(isLoading){
-      button.querySelector('.popup__save').textContent = `${defaultText}...`;
+        return button.querySelector('.popup__save').textContent = `${outputText}...`;
     } else {
-        button.textContent = defaultText;
+        button.querySelector('.popup__save').textContent = outputText;
     }
   }
-
