@@ -17,5 +17,6 @@
 
 `npm run dev` — запуск на локальном сервере;
 
-`npm run deploy` — сборка и публикация на github pages;
+`npm run deploy` — сборка и публикация на github pages;  
+
 Ссылка на проект <a href="https://dariabold.github.io/mesto/">"Место"</a>
